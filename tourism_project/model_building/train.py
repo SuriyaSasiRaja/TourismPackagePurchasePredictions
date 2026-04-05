@@ -11,22 +11,13 @@ from sklearn.metrics import classification_report, accuracy_score, f1_score
 from huggingface_hub import HfApi, create_repo
 from huggingface_hub.utils import RepositoryNotFoundError
 
-# Load Data from Hugging Face Datasets
-# Note: Ensure these paths match your HF Dataset structure exactly
-repo_id_data = "SuriyaSR/TourismPackagePurchasesDataset"
-Xtrain_path = f"hf://datasets/{repo_id_data}/Xtrain.csv"
-ytrain_path = f"hf://datasets/{repo_id_data}/ytrain.csv"
-Xtest_path = f"hf://datasets/{repo_id_data}/Xtest.csv"
-ytest_path = f"hf://datasets/{repo_id_data}/ytest.csv"
+# Load Data from Hugging Face Datasets and Define Features and Target
+X_train = pd.read_csv("hf://datasets/SuriyaSR/TourismPackagePurchasesDataset/Xtrain.csv")
+y_train = pd.read_csv("hf://datasets/SuriyaSR/TourismPackagePurchasesDataset/ytrain.csv")
+X_test = pd.read_csv("hf://datasets/SuriyaSR/TourismPackagePurchasesDataset/Xtest.csv")
+y_test = pd.read_csv("hf://datasets/SuriyaSR/TourismPackagePurchasesDataset/ytest.csv")
 
-# Define Features and Target
 target_col = 'ProdTaken'
-X_train = pd.read_csv(Xtrain_path)
-y_train = pd.read_csv(ytrain_path)
-X_test = pd.read_csv(Xtest_path)
-y_test = pd.read_csv(ytest_path)
-
-
 
 # Identify Feature Types
 numeric_features = X_train.select_dtypes(include=['int64', 'float64']).columns.tolist()
