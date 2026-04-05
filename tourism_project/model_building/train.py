@@ -41,7 +41,6 @@ preprocessor = make_column_transformer(
 xgb_model = xgb.XGBClassifier(
     scale_pos_weight=class_weight, 
     random_state=42, 
-    use_label_encoder=False, 
     eval_metric='logloss'
 )
 
@@ -77,7 +76,7 @@ mlflow.set_experiment("Tourism_Package_MLOps_Experiment")
 # Upload to Hugging Face Model Hub
 # Ensure you have set the HF_TOKEN environment variable in your GitHub Secrets or Local Env
 api = HfApi(token=os.getenv("HF_TOKEN"))
-model_repo_id = "SuriyaSasiRaja/TourismPackageModel"
+model_repo_id = "SuriyaSR/TourismPackageModel"
 
 try:
     api.repo_info(repo_id=model_repo_id, repo_type="model")
