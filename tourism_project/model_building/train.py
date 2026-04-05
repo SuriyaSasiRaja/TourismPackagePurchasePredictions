@@ -11,6 +11,11 @@ from sklearn.metrics import classification_report, accuracy_score, f1_score
 from huggingface_hub import HfApi, create_repo
 from huggingface_hub.utils import RepositoryNotFoundError
 
+# for hugging face space authentication to upload files
+from huggingface_hub import login, HfApi, create_repo
+from huggingface_hub.utils import RepositoryNotFoundError, HfHubHTTPError
+import mlflow
+
 # Load Data from Hugging Face Datasets and Define Features and Target
 X_train = pd.read_csv("hf://datasets/SuriyaSR/TourismPackagePurchasesDataset/Xtrain.csv")
 y_train = pd.read_csv("hf://datasets/SuriyaSR/TourismPackagePurchasesDataset/ytrain.csv")
