@@ -87,7 +87,7 @@ except RepositoryNotFoundError:
 
 api.upload_file(
     path_or_fileobj=model_filename,
-    path_in_repo=model_filename,
+    path_in_repo="",
     repo_id=model_repo_id,
     repo_type="model",
 )
