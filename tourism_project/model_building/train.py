@@ -14,18 +14,19 @@ from huggingface_hub.utils import RepositoryNotFoundError
 # Load Data from Hugging Face Datasets
 # Note: Ensure these paths match your HF Dataset structure exactly
 repo_id_data = "SuriyaSR/TourismPackagePurchasesDataset"
-train_path = f"hf://datasets/{repo_id_data}/train.csv"
-test_path = f"hf://datasets/{repo_id_data}/test.csv"
-
-train_df = pd.read_csv(train_path)
-test_df = pd.read_csv(test_path)
+Xtrain_path = f"hf://datasets/{repo_id_data}/Xtrain.csv"
+ytrain_path = f"hf://datasets/{repo_id_data}/ytrain.csv"
+Xtest_path = f"hf://datasets/{repo_id_data}/Xtest.csv"
+ytest_path = f"hf://datasets/{repo_id_data}/ytest.csv"
 
 # Define Features and Target
 target_col = 'ProdTaken'
-X_train = train_df.drop(columns=[target_col])
-y_train = train_df[target_col]
-X_test = test_df.drop(columns=[target_col])
-y_test = test_df[target_col]
+X_train = pd.read_csv(Xtrain_path)
+y_train = pd.read_csv(ytrain_path)
+X_test = pd.read_csv(Xtest_path)
+y_test = pd.read_csv(ytest_path)
+
+
 
 # Identify Feature Types
 numeric_features = X_train.select_dtypes(include=['int64', 'float64']).columns.tolist()
